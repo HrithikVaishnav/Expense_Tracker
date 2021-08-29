@@ -30,7 +30,7 @@ const Auth = (props) => {
           console.log(response);
           localStorage.setItem('jwt', JSON.stringify(response.data.token));
           localStorage.setItem('userid', JSON.stringify(response.data.userId));
-          history.push('/Catogory');
+          history.push('/');
           window.location.reload();
         }).catch(e => {
           console.log(e);
@@ -42,7 +42,7 @@ const Auth = (props) => {
       Axios.post('/signup', { email, password })
         .then(response => {
           setLoading(true);
-          history.push('/Catogory');
+          history.push('/');
           console.log(response);
           
           props.userHandler(true, response.data.userId);

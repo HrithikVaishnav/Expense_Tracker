@@ -36,9 +36,6 @@ section form textarea:focus {
   outline: 2px solid #311b92;
 }
 
-.btn:hover {
-  background-color: rgb(164, 171, 233);
-}
 .error {
   background-color: rgb(243, 94, 94);
   border-radius: 5px;

@@ -1,21 +1,16 @@
-.categories{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 20px;
+.categories {
+  margin: 20px 0;
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
 }
-.Cform{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+
+.Cform > div > input {
+  width: 400px;
+  border-radius: 5px;
 }
-.btn{
-    border-radius: 10px;
-    font-size: 20px;
-    padding: 10px;
-    margin: 5px;
-}
-.Cform > div > input{
-    width: 400px;
-    border-radius: 5px;
+@media (max-width: 768px) {
+  .categories {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

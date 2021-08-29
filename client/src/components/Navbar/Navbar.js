@@ -10,11 +10,16 @@ const Navbar = (props) => {
       <a href="/">~/Expense/</a>
 
       <ul className="nav">
-        {props.isauth ?
+        {props.token ?
           <>
             <li>
               <NavLink className="nav-link" exact to="/">
-                <Header title="SignUp" />
+                <Header title="Home" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="nav-link" exact to="/Category">
+                <Header title="Category" />
               </NavLink>
             </li>
             <li>
@@ -27,12 +32,12 @@ const Navbar = (props) => {
           <>
             <li>
               <NavLink className="nav-link" exact to="/">
-                <Header title="SignUp" />
+                <Header title="Home" />
               </NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" exact to="/Category">
-                <Header title="Category" />
+              <NavLink className="nav-link" exact to="/auth">
+                <Header title="SignUp" />
               </NavLink>
             </li>
           </>

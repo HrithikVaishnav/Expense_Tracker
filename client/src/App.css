@@ -70,7 +70,7 @@ button {
   transition: border-color 0.1s, box-shadow 0.1s;
   color: #222;
   line-height: 1.5;
-  width: 100px;
+  width: max-content;
   color: #673ab7;
   background: #ede7f6;
   cursor: pointer;

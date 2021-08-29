@@ -1,12 +1,9 @@
 import React from 'react';
 import './style.css';
 
-const CategoryCard = (props) => {
-    const bgColour = Math.floor(Math.random()*16777215).toString(16);
-    // for random color style={{backgroundColor: `#${bgColour}`}} 
-    const name = props.name;
-    const key = props.key;
-    const date = props.date;
+const CategoryCard = ({ name, key, date, ...props }) => {
+    const bgColour = Math.floor(Math.random() * 16777215).toString(16);
+
     return (
         <div className="CCard">
             <div className="title">
@@ -15,11 +12,7 @@ const CategoryCard = (props) => {
             <div className="Date">
                 {date}
             </div>
-            <button
-                type="button"
-                className="btn"
-                onClick={()=>props.exploreCategory(name)}
-            >
+            <button type="button" onClick={()=>props.exploreCategory(name)}>
                 Explore
             </button>
         </div>
