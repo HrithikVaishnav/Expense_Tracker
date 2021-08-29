@@ -1,50 +1,46 @@
-.container{
-    margin: auto;
-    margin-top: 5%;
-    width: 30%;
-    border: 1px solid;
-    box-shadow: 10px 10px 5px rgb(177, 175, 175);
+section form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin-top: 2vh;
 }
-.authform{
-    display: flex;
-    flex-direction: column;
+section form label {
+  font-size: 20px;
+  font-weight: 500;
+  color: #222;
+  margin: 20px 0 5px 0;
 }
-
-.form-group{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+section form input,
+section form textarea {
+  border: 3px solid #ede7f6;
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  transition: border-color 0.1s, box-shadow 0.1s;
+  color: #222;
+  line-height: 1.5;
 }
-
-label{
-    font-size: 20px;
-    margin: 20px;
-}
-
-input{
-    font-size: 20px;
-    margin: 20px;
-    padding: 10px;
-    width: 50%;
-}
-
-.form-btn{
-    display: flex;
-    flex-direction: row;
-}
-.btn{
-    background-color: rgb(81, 95, 216);
-    margin:10px;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
+section form input:active,
+section form input:focus,
+section form textarea:active,
+section form textarea:focus {
+  border-color: #b39ddb;
+  outline: 0;
 }
 
-.btn:hover{
-    background-color: rgb(164, 171, 233);
+.span-btn {
+  cursor: pointer;
+  margin-left: 10px;
+  padding: 0 2px;
+  outline: 2px solid #311b92;
 }
-.error{
-    background-color: rgb(243, 94, 94);
-    border-radius: 5px;
-    padding: 10px;
+
+.btn:hover {
+  background-color: rgb(164, 171, 233);
+}
+.error {
+  background-color: rgb(243, 94, 94);
+  border-radius: 5px;
+  padding: 10px;
 }

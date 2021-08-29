@@ -4,7 +4,6 @@ import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import './category.css';
 
 const Category = (props) => {
-
     console.log("in category", props);
    
     const [cname, setCname] = useState('');

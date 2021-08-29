@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Router, Switch, Route} from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import history from './history';
 import Auth from './pages/Auth/Auth';
 import Category from './pages/Category/Category';
@@ -9,38 +9,38 @@ import Logout from "./pages/Logout";
 
 const App = (props) => {
 
-    const [userId, setuserId] = useState('');
-    
-    const userHandler = (auth, userid) => {
-      console.log(userid);
-      if(!auth)
-        setuserId('');
-      else 
-        setuserId(userid);
+  const [userId, setuserId] = useState('');
 
-      console.log(userId);
-    }
+  const userHandler = (auth, userid) => {
+    console.log(userid);
+    if (!auth)
+      setuserId('');
+    else
+      setuserId(userid);
 
-    return (
-      <div className="App">
-        <Router history={history}>
-          <div>
-            <Navbar 
-              token={props.token}
-              userHandler={userHandler}
-            />
-          </div>
-          {
-            (props.token != null)
+    console.log(userId);
+  }
+
+  return (
+    <div className="App">
+      <Router history={history}>
+        <div>
+          <Navbar
+            token={props.token}
+            userHandler={userHandler}
+          />
+        </div>
+        {
+          (props.token != null)
             ?
             <>
               <Switch>
-                <Route 
-                  exact path="/Category" 
-                  component={() => <Category 
-                      userId={userId}
-                      userHandler={userHandler}
-                    />
+                <Route
+                  exact path="/Category"
+                  component={() => <Category
+                    userId={userId}
+                    userHandler={userHandler}
+                  />
                   }
                 />
                 <Route exact path="/Logout" component={Logout} />
@@ -49,27 +49,27 @@ const App = (props) => {
             :
             <>
               <Switch>
-              <Route 
-                  exact path="/" 
-                  component={() => <Auth 
-                      userHandler={userHandler}
-                    />
+                <Route
+                  exact path="/"
+                  component={() => <Auth
+                    userHandler={userHandler}
+                  />
                   }
                 />
-                <Route 
-                  exact path="/Category" 
-                  component={() => <Category 
-                      userId={userId}
-                      userHandler={userHandler}
-                    />
+                <Route
+                  exact path="/Category"
+                  component={() => <Category
+                    userId={userId}
+                    userHandler={userHandler}
+                  />
                   }
                 />
               </Switch>
             </>
-          }
-        </Router>
-      </div>
-    );
+        }
+      </Router>
+    </div>
+  );
 }
 
 export default App;
