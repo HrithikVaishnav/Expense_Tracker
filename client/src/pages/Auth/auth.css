@@ -11,6 +11,7 @@ section form label {
   margin: 20px 0 5px 0;
 }
 section form input,
+section form select,
 section form textarea {
   border: 3px solid #ede7f6;
   margin: 5px 0;

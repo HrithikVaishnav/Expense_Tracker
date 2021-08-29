@@ -34,8 +34,7 @@ const Auth = (props) => {
           window.location.reload();
         }).catch(e => {
           console.log(e);
-          if (e.data !== undefined)
-            setError(e.data.error);
+          setError(e.data.error);
         })
     }
     else {
@@ -52,8 +51,7 @@ const Auth = (props) => {
           window.location.reload();
         }).catch(e => {
           console.log(e);
-          if (e.data !== undefined)
-            setError(e.data.error);
+          setError(e.data.error);
         })
     }
   }

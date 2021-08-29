@@ -41,6 +41,10 @@ const App = (props) => {
               />
             }
           />
+          <Route
+            path="/Category/:id"
+            component={Expense}
+          />
           <Route exact path="/Logout" component={Logout} />
         </Switch>
         :
@@ -50,6 +54,7 @@ const App = (props) => {
             exact path="/auth"
             component={() => <Auth userHandler={userHandler} />}
           />
+          
           <Route
             exact path="/Category"
             component={() =>
@@ -59,15 +64,7 @@ const App = (props) => {
               />
             }
           />
-          <Route
-            exact path="/Category/:id"
-            component={() =>
-              <Expense
-                userId={userId}
-                userHandler={userHandler}
-              />
-            }
-          />
+          
         </Switch>
       }
     </Router>

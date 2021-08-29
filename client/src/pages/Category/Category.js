@@ -30,8 +30,8 @@ const Category = () => {
     }, [userId]);
 
     const exploreCategory = (name) => {
-        console.log(name);
         history.push(`/Category/${name}`);
+        window.location.reload();
     }
 
     const addCategory = async (e) => {
@@ -45,9 +45,8 @@ const Category = () => {
     }
 
     const addSubmitHandler = async (e) => {
-        e.preventDefault();
         console.log(userId, addcategory)
-        const res = await Axios.post('/Category/Expense/addExpense', { userId: userId, price: price, remark: remark, date: Date.now, category: addcategory });
+        const res = await Axios.post('/Category/Expense/addExpense', { userId: userId, price: price, remark: remark, date: Date.now, name: addcategory });
         console.log(res);
         setShowaddform(false);
     }
@@ -78,14 +77,16 @@ const Category = () => {
                         />
 
                         <label name="name">Category</label>
-                        <input
-                            type='name'
-                            name='addcategory'
+                        <select
                             value={addcategory}
-                            placeholder="Enter any remark"
-                            required
                             onChange={e => setAddcategory(e.target.value)}
-                        />
+                        >
+                        {
+                            categories.map(({ name }, index) => 
+                                <option value={name} >{name}</option>)
+                        }
+                        </select>
+
                         <div style={{ display: 'flex' }}>
                             <button type='submit'>
                                 Submit

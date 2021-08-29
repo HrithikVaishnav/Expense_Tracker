@@ -17,8 +17,8 @@ const expenseSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     },
-    category: { 
-        name: String,
+    name: { 
+        type: String,
         default: ''
     },
 })

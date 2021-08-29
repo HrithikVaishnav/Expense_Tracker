@@ -5,12 +5,13 @@ const Expense = require("../models/Expense");
 const router = express.Router();
 
 router.get('/', async(req,res) => {
-    const userId = req.body.userId;
-    const category = req.body.category;
-    Expense.find({userId : userId, category: category})
+    const userId = req.query.userId;
+    const category = req.query.category;
+    Expense.find({userId : userId, name: category})
     .then((result) => {
         const token = jwt.sign({ userId }, process.env.secret);
-        res.send({ token });
+        console.log(result);
+        res.send({ token, result });
     })
     .catch((err) => {
         console.log(err);
@@ -23,16 +24,16 @@ router.post('/addExpense', async(req,res) => {
         price,
         remark,
         date,
-        category,
+        name,
     } = req.body;
-    console.log("hiii" , category);
+    console.log("hiii" , name);
     try{
         const expense = new Expense({
             userId,
             price,
             remark,
             date,
-            category
+            name,
         });
         await expense.save();
 
