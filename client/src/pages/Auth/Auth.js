@@ -42,9 +42,14 @@ const Auth = (props) => {
       Axios.post('/signup', { email, password })
         .then(response => {
           setLoading(true);
-          history.push('/')
+          history.push('/Catogory');
+          console.log(response);
+          
+          props.userHandler(true, response.data.userId);
           console.log(response);
           localStorage.setItem('jwt', JSON.stringify(response.data.token));
+          localStorage.setItem('userid', JSON.stringify(response.data.userId));
+          window.location.reload();
         }).catch(e => {
           console.log(e);
           if (e.data !== undefined)

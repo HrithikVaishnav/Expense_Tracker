@@ -8,6 +8,11 @@ const Category = (props) => {
    
     const [cname, setCname] = useState('');
     const [date, setDate] = useState(Date.now);
+    const [showaddform, setShowaddform] = useState(false);
+
+    const [remark, setRemark] = useState('');
+    const [price, setPrice] = useState();
+    const [addcategory, setAddcategory] = useState('');
     //console.log(userId);
     const [categories, setCategories] = useState([]);
     let userId = JSON.parse(localStorage.getItem("userid"));
@@ -43,8 +48,64 @@ const Category = (props) => {
         })
     }
 
+    const addExpense = () => {
+        setShowaddform(true);
+    }
+
+    const addSubmitHandler = () => {
+        Axios.post('/Category/Expense/addExpense', {userId: userId, price: price, remark: remark, date:Date.now, category: addcategory})
+            .then((response) => {
+                console.log(response);
+                setShowaddform(false);
+            }).catch(e => {
+                console.log(e);
+        })
+    }
+
     return (
         <div> 
+            {
+            (showaddform)
+            ?
+            <>
+            <form className="addform" onSubmit={addSubmitHandler}>
+                <label name="name">Remark</label>
+                <input
+                    type='name'
+                    name='remark'
+                    value={remark}
+                    placeholder="Enter any remark"
+                    required
+                    onChange={e => setRemark(e.target.value)}
+                />
+
+                <label name="name">Price</label>
+                <input
+                    type='number'
+                    name='price'
+                    value={price}
+                    placeholder="Enter price"
+                    required="required"
+                    onChange={e => setPrice(e.target.value)}
+                />
+
+                <label name="name">Category</label>
+                <input
+                    type='name'
+                    name='addcategory'
+                    value={addcategory}
+                    placeholder="Enter any remark"
+                    required
+                    onChange={e => setAddcategory(e.target.value)}
+                />
+                <button type='submit'>
+                    Submit
+                </button>
+
+            </form>
+            </>
+            :
+            <>
             <h1>Category Page</h1>
             <form onSubmit={addCategory} className="Cform">
                 <div>
@@ -64,6 +125,13 @@ const Category = (props) => {
                     Add Category
                 </button>
             </form>
+            <button
+                    type="submit"
+                    className="btn"
+                    onClick={addExpense}
+            >
+                Add Expense
+            </button>
             <div className="categories">
             {   
                 (categories.length>0)?
@@ -78,6 +146,8 @@ const Category = (props) => {
                 :null
             }
             </div>
+            </>
+            }
         </div>
     )
 }
