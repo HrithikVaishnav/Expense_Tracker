@@ -20,9 +20,6 @@ app.use(
     })
 )
 app.use(bodyParser.json());
-//app.use(authRoutes);
-//app.use(expenseRoute);
-//app.use(categoryRoute);
 
 const URI = process.env.URI;
 
@@ -39,22 +36,14 @@ mongoose.connection.on('error',(err)=> {
     console.error('Error occured',err);
 });
 
-app.use('/', authRoutes);
-
-//app.get('/',requireAuth,(req,res) => {
-//    res.send(`Your Email ${req.user.email}`);
-//});
+app.use('/', authRoutes, requireAuth);
 
 app.use('/Category/', categoryRoute);
 
 app.use('/Category/Expense/', expenseRoute);
 
-//app.get('/Category/Expense/', requireAuth,(req,res) => {
-//    res.send(`Your Email ${req.user.email}`);
-//});
 
-
-app.listen(8000,()=>{
+app.listen(process.env.PORT || 8000,()=>{
     console.log("server running on port 8000");
 })
 
