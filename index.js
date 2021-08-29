@@ -55,6 +55,6 @@ app.use('/Category/Expense/', expenseRoute);
 
 
 app.listen(8000,()=>{
-    console.log("server running on port 3000");
+    console.log("server running on port 8000");
 })
 

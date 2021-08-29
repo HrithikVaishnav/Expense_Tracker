@@ -6,12 +6,8 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:8000/';
 
-let userData =  JSON.parse(localStorage.getItem("userData"))
-let token
-if(userData){
-    token= userData.token
-}
-    
+
+let token= JSON.parse(localStorage.getItem("jwt"))
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
@@ -25,12 +21,12 @@ axios.interceptors.response.use(response => {
     return response;
 }, error => {
     console.log(error.response);
-    return Promise.reject(error);
+    return Promise.reject(error.response);
 });
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App token={token}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

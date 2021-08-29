@@ -1,4 +1,21 @@
 .categories{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.Cform{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.btn{
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    margin: 5px;
+}
+.Cform > div > input{
+    width: 400px;
+    border-radius: 5px;
 }

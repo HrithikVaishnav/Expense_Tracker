@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import './auth.css';
 
-const Auth = () => {
+const Auth = (props) => {
 
     let history = useHistory();
 
@@ -22,12 +23,19 @@ const Auth = () => {
         event.preventDefault();
         if (isLogin) {
             Axios.post('/signin', {email, password})
-                .then(response => {
+                .then((response) => {
                     setLoading(true);
-                    history.push('/Catogory');
+                    console.log(props);
+                    props.userHandler(true, response.data.userId);
                     console.log(response);
+                    localStorage.setItem('jwt', JSON.stringify(response.data.token));
+                    localStorage.setItem('userid', JSON.stringify(response.data.userId));
+                    history.push('/Catogory');
+                    window.location.reload();
                 }).catch(e => {
                    console.log(e);
+                   if(e.data !== undefined)
+                    setError(e.data.error);
                 })
         }
         else{
@@ -36,8 +44,11 @@ const Auth = () => {
                     setLoading(true);
                     history.push('/')
                     console.log(response);
+                    localStorage.setItem('jwt', JSON.stringify(response.data.token));
                 }).catch(e => {
                    console.log(e);
+                   if(e.data !== undefined)
+                    setError(e.data.error);
                 })
         }
     }
@@ -74,7 +85,7 @@ const Auth = () => {
                             onChange={e => setPassword(e.target.value)}
                         />
                         {error.length > 0 &&
-                            <div className="mt-1"> <span className='error text-danger'>{error}</span></div>}
+                            <div className="error"> <span>{error}</span></div>}
 
                     </div>
 
@@ -106,4 +117,4 @@ const Auth = () => {
     )
 }
 
-export default Auth;
+export default withRouter(Auth);

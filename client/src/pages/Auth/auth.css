@@ -43,3 +43,8 @@ input{
 .btn:hover{
     background-color: rgb(164, 171, 233);
 }
+.error{
+    background-color: rgb(243, 94, 94);
+    border-radius: 5px;
+    padding: 10px;
+}

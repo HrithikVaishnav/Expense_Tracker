@@ -5,11 +5,14 @@ const Category = require("../models/Category");
 const router = express.Router();
 
 router.get('/', async(req,res) => {
-    const userId = req.body.userId;
-    Category.find({userId : userId})
+    let userId = req.query.userId
+    
+    console.log(userId);
+    Category.find({"userId":userId})
     .then((result) => {
+        console.log(result, "result here");
         const token = jwt.sign({ userId }, process.env.secret);
-        res.send({ token });
+        res.send({ token, result });
     })
     .catch((err) => {
         console.log(err);

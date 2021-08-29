@@ -1,52 +1,69 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
+import { Router, Switch, Route} from "react-router-dom";
+import history from './history';
 import Auth from './pages/Auth/Auth';
 import Category from './pages/Category/Category';
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./pages/Logout";
 
-function App() {
+const App = (props) => {
 
-    const [isauth, setIsauth] = useState(false);
     const [userId, setuserId] = useState('');
-
-    const userHandler = (userid) => {
-      if(!isauth)
-        setIsauth('');
+    
+    const userHandler = (auth, userid) => {
+      console.log(userid);
+      if(!auth)
+        setuserId('');
       else 
-        setIsauth(userid);
-    }
+        setuserId(userid);
 
-    const authHandlerLogin = () => {
-      setIsauth(true);
-    }
-
-    const authHandlerLogout = () => {
-      setIsauth(false);
+      console.log(userId);
     }
 
     return (
       <div className="App">
-        <Router>
+        <Router history={history}>
           <div>
-            <Navbar isauth={isauth}/>
+            <Navbar 
+              token={props.token}
+              userHandler={userHandler}
+            />
           </div>
           {
-            (isauth)
+            (props.token != null)
             ?
             <>
               <Switch>
-                <Route exact path="/" component={Auth} />
+                <Route 
+                  exact path="/Category" 
+                  component={() => <Category 
+                      userId={userId}
+                      userHandler={userHandler}
+                    />
+                  }
+                />
                 <Route exact path="/Logout" component={Logout} />
               </Switch>
             </>
             :
             <>
               <Switch>
-                <Route exact path="/" component={Auth} />
-                <Route exact path="/Category" component={Category} />
+              <Route 
+                  exact path="/" 
+                  component={() => <Auth 
+                      userHandler={userHandler}
+                    />
+                  }
+                />
+                <Route 
+                  exact path="/Category" 
+                  component={() => <Category 
+                      userId={userId}
+                      userHandler={userHandler}
+                    />
+                  }
+                />
               </Switch>
             </>
           }

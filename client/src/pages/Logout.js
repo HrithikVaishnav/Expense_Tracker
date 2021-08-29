@@ -1,6 +1,23 @@
+import React from 'react';
+import {useHistory} from 'react-router-dom';
+
 const Logout = () => {
+    let history = useHistory();
+
+    const logoutHandler = () => {
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('userId');
+        history.push('/');
+        window.location.reload(false);
+    }
     return (
-        <div>Logout Screen</div>
+        <button
+            type="button"
+            className="btn"
+            onClick={logoutHandler}
+        >
+        Logout
+        </button>
     )
 }
 
