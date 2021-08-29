@@ -3,7 +3,6 @@
 ### How to run
 
 ```bash
-cd backend
 npm i
 npm start
 ```
