@@ -16,7 +16,7 @@ const requireAuth = require('./middleware/requireAuth');
 const app = express();
 app.use(
     cors({
-        origin: "http://localhost:19006",
+        origin: "http://localhost:3000",
     })
 )
 app.use(bodyParser.json());
@@ -54,7 +54,7 @@ app.use('/Category/Expense/', expenseRoute);
 //});
 
 
-app.listen(3000,()=>{
+app.listen(8000,()=>{
     console.log("server running on port 3000");
 })
 

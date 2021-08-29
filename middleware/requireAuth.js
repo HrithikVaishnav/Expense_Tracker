@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         return res.status(401).send({error:' You are not logged in'});
     }
 
-    const token = authorization;
+    const token = authorization.replace('Bearer ','');
 
     jwt.verify(token, process.env.secret, async(err, payload) =>{
         if(err) {

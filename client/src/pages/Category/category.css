@@ -1,0 +1,4 @@
+.categories{
+    display: flex;
+    flex-direction: row;
+}

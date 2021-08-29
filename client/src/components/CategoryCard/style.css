@@ -1,0 +1,24 @@
+.CCard{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    width: 20%;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.CCard > .title{
+    margin:10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.CCard > .Date{
+    font-size: 10px;
+}
