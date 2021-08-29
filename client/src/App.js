@@ -6,6 +6,7 @@ import Auth from './pages/Auth/Auth';
 import Category from './pages/Category/Category';
 import Navbar from "./components/Navbar/Navbar";
 import Logout from "./pages/Logout";
+import Expense from './pages/Expense/Expense';
 
 const App = (props) => {
 
@@ -59,6 +60,14 @@ const App = (props) => {
                 <Route
                   exact path="/Category"
                   component={() => <Category
+                    userId={userId}
+                    userHandler={userHandler}
+                  />
+                  }
+                />
+                <Route
+                  exact path="/Category/:id"
+                  component={() => <Expense
                     userId={userId}
                     userHandler={userHandler}
                   />

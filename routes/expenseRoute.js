@@ -25,7 +25,7 @@ router.post('/addExpense', async(req,res) => {
         date,
         category,
     } = req.body;
-
+    console.log("hiii" , category);
     try{
         const expense = new Expense({
             userId,

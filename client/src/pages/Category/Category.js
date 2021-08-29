@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import Axios from 'axios';
 import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import './category.css';
 
 const Category = (props) => {
+    let history = useHistory();
+
     console.log("in category", props);
    
     const [cname, setCname] = useState('');
@@ -35,8 +38,9 @@ const Category = (props) => {
         }
     },[]);
 
-    const exploreCategory = (key) => {
-        
+    const exploreCategory = (name) => {
+        console.log(name);
+        history.push(`/Category/${name}`);
     }
 
     const addCategory = () => {
@@ -53,7 +57,8 @@ const Category = (props) => {
     }
 
     const addSubmitHandler = () => {
-        Axios.post('/Category/Expense/addExpense', {userId: userId, price: price, remark: remark, date:Date.now, category: addcategory})
+        console.log(addCategory);
+        Axios.post('/Category/Expense/addExpense', {userId: userId, price: price, remark: remark, date: Date.now, category: addcategory})
             .then((response) => {
                 console.log(response);
                 setShowaddform(false);
@@ -94,7 +99,7 @@ const Category = (props) => {
                     type='name'
                     name='addcategory'
                     value={addcategory}
-                    placeholder="Enter any remark"
+                    placeholder="Enter any category"
                     required
                     onChange={e => setAddcategory(e.target.value)}
                 />

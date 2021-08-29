@@ -18,7 +18,7 @@ const CategoryCard = (props) => {
             <button
                 type="button"
                 className="btn"
-                onClick={props.exploreCategory(key)}
+                onClick={()=>props.exploreCategory(name)}
             >
                 Explore
             </button>
